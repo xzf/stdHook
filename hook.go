@@ -12,6 +12,10 @@ type hookStd struct {
 	callback        func([]byte)
 }
 
+func (std *hookStd) Write(data []byte) (int, error) {
+	return std.systemStd.Write(data)
+}
+
 func (std *hookStd) hookThread() {
 	reader := bufio.NewReader(std.hookStdReadFile)
 	for {
