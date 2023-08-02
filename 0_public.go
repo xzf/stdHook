@@ -3,8 +3,8 @@ package stdX
 import "os"
 
 var (
-	Stdout *hookStd
-	Stderr *hookStd
+	_stdoutHookObj *hookStd
+	_stderrHookObj *hookStd
 )
 
 func InitHookStdout(callback func([]byte)) error {
@@ -20,7 +20,7 @@ func InitHookStdout(callback func([]byte)) error {
 		callback:        callback,
 	}
 	go tmpStdout.hookThread()
-	Stdout = tmpStdout
+	_stdoutHookObj = tmpStdout
 	return nil
 }
 
@@ -37,6 +37,6 @@ func InitHookStderr(callback func([]byte)) error {
 		callback:        callback,
 	}
 	go tmpStderr.hookThread()
-	Stderr = tmpStderr
+	_stderrHookObj = tmpStderr
 	return nil
 }
