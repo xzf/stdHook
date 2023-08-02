@@ -7,7 +7,7 @@ var (
 	Stderr *hookStd
 )
 
-func InitHookStdout(callback func(byte)) error {
+func InitHookStdout(callback func([]byte)) error {
 	readFile, writeFile, err := os.Pipe()
 	if err != nil {
 		return err
@@ -24,7 +24,7 @@ func InitHookStdout(callback func(byte)) error {
 	return nil
 }
 
-func InitHookStderr(callback func(byte)) error {
+func InitHookStderr(callback func([]byte)) error {
 	readFile, writeFile, err := os.Pipe()
 	if err != nil {
 		return err
