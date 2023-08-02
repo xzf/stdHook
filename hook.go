@@ -38,6 +38,7 @@ func (std *hookStd) hookThread() {
 			//get err should panic
 			panic("[tbzai123s2] " + err.Error())
 		}
+		line = append(line, '\n')
 		//ignore systemStd.Write error
 		std.systemStd.Write(line)
 		if std.callback != nil {
