@@ -6,13 +6,10 @@ import (
 )
 
 type hookStd struct {
+	*os.File
 	systemStd       *os.File
 	hookStdReadFile *os.File
 	callback        func([]byte)
-}
-
-func (std *hookStd) Write(data []byte) (int, error) {
-	return std.systemStd.Write(data)
 }
 
 func (std *hookStd) hookThread() {
